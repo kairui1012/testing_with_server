@@ -27,8 +27,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email'],
-            'password' => ['required', 'string'],
+            'phone' => ['required', 'string'],
         ];
     }
 
@@ -41,13 +40,21 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
-            RateLimiter::hit($this->throttleKey());
+        $phone = $this->input('phone');
 
-            throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+        // 尝试找到用户
+        $user = \App\Models\User::where('phone', $phone)->first();
+
+        // 如果找不到，就创建新用户
+        if (! $user) {
+            $user = \App\Models\User::create([
+                'phone' => $phone,
+
             ]);
         }
+
+        // 登录该用户
+        Auth::login($user, $this->boolean('remember'));
 
         RateLimiter::clear($this->throttleKey());
     }
@@ -80,6 +87,6 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->string('email')).'|'.$this->ip());
+        return Str::transliterate(Str::lower($this->string('phone')).'|'.$this->ip());
     }
 }
