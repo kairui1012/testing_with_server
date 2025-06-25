@@ -11,6 +11,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/Daily-Log', function () {
+    return view('Daily-Log');
+})->middleware(['auth', 'verified'])->name('Daily-Log');
+
+Route::get('/Weekly-Report', function () {
+    return view('Weekly-Report');
+})->middleware(['auth', 'verified'])->name('Weekly-Report');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
