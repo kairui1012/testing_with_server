@@ -6,9 +6,12 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                        <img src="https://i.pinimg.com/736x/25/08/22/2508224b00dd503aeef6bd2639535a44.jpg"
+                            alt="Logo"
+                            class="h-12 w-auto">
                     </a>
                 </div>
+
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -17,8 +20,6 @@
                     </x-nav-link>
                 </div>
             </div>
-
-            <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
