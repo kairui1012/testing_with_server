@@ -129,7 +129,7 @@
                 stars.forEach((s, i) => {
                     if (i <= index) {
                         s.classList.add('text-yellow-400');
-                        s.c lassList.remove('text-gray-300');
+                        s.classList.remove('text-gray-300');
                     } else {
                         s.classList.add('text-gray-300');
                         s.classList.remove('text-yellow-400');
