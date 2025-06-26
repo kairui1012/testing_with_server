@@ -21,8 +21,8 @@
                     <x-nav-link :href="route('Daily-Log')" :active="request()->routeIs('Daily-Log')">
                         {{ __('Daily-Log') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('Weekly-Report')" :active="request()->routeIs('Weekly-Report')">
-                        {{ __('Weekly-Report') }}
+                    <x-nav-link :href="route('weekly-report')" :active="request()->routeIs('Weekly-Report')">
+                    {{ __('weekly-report') }}
                     </x-nav-link>
                 </div>
             </div>

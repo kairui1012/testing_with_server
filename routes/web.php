@@ -20,9 +20,9 @@ Route::get('/Daily-Log', function () {
     return view('Daily-Log');
 })->middleware(['auth', 'verified'])->name('Daily-Log');
 
-Route::get('/Weekly-Report', function () {
-    return view('Weekly-Report');
-})->middleware(['auth', 'verified'])->name('Weekly-Report');
+Route::get('/weekly-report', function () {
+    return view('weekly-report');
+})->middleware(['auth', 'verified'])->name('weekly-report');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

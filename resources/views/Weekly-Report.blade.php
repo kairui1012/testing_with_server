@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Simple Feedback List</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="min-h-screen bg-gray-50">
@@ -20,7 +21,7 @@
                     GOOD
                 </div>
                 <textarea
-                    class="flex-1 p-4 border-2 border-gray-400 rounded-xl text-sm resize-none focus:outline-none focus:border-green-400 focus:ring-4 focus:ring-green-100 transition-all duration-200 hover:border-green-300"
+                    class="flex-1 p-4 border-2 border-gray-400 rounded-xl text-sm resize-none focus:outline-none focus:border-green-400 "
                     rows="2"
                     placeholder="Share what went well..."
                 ></textarea>
@@ -34,7 +35,7 @@
                     BAD
                 </div>
                 <textarea
-                    class="flex-1 p-4 border-2 border-gray-400 rounded-xl text-sm resize-none focus:outline-none focus:border-red-400 focus:ring-4 focus:ring-red-100 transition-all duration-200 hover:border-red-300"
+                    class="flex-1 p-4 border-2 border-gray-400 rounded-xl text-sm resize-none focus:outline-none focus:border-red-400 "
                     rows="2"
                     placeholder="What could be improved..."
                 ></textarea>
@@ -48,7 +49,7 @@
                 REMARK
                 </div>
                 <textarea
-                    class="flex-1 p-4 border-2 border-gray-400 rounded-xl text-sm resize-none focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100 transition-all duration-200 hover:border-blue-300"
+                    class="flex-1 p-4 border-2 border-gray-400 rounded-xl text-sm resize-none focus:border-blue-400 "
                     rows="2"
                     placeholder="Additional comments..."
                 ></textarea>

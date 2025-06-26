@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
             $table->string('phone');   // 推荐 string 适合手机号
-            $table->text('good');      // 用户填写的好评
-            $table->text('bad');       // 用户填写的差评
-            $table->text('remark');    // 用户备注
-            $table->string('week')->nullable();
+            $table->text('good')->nullable();      // 用户填写的好评
+            $table->text('bad')->nullable();       // 用户填写的差评
+            $table->text('remark')->nullable();    // 用户备注
+            $table->string('week');
         });
     }
 
