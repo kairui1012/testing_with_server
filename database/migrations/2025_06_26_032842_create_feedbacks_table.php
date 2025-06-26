@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('feedbacks', function (Blueprint $table) {
+        Schema::create('feedback', function (Blueprint $table) {
             $table->id();
             $table->string('phone');   // 推荐 string 适合手机号
             $table->text('good');      // 用户填写的好评
             $table->text('bad');       // 用户填写的差评
             $table->text('remark');    // 用户备注
             $table->string('week')->nullable();
-            $table->timestamps(); // Laravel 默认 created_at 和 updated_at
         });
     }
 

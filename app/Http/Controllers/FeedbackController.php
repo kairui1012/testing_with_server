@@ -17,11 +17,14 @@ class FeedbackController extends Controller
             ['phone' => $userPhone, 'week' => $week],
             ['good' => null, 'bad' => null, 'remark' => null]
         );
+
     }
 
     // 保存 good（好评）
     public function saveGood(Request $request)
     {
+
+
         $request->validate([
             'good' => 'required|string',
         ]);
@@ -31,8 +34,8 @@ class FeedbackController extends Controller
 
         $feedback->good = $request->input('good');
         $feedback->save();
-
         return redirect()->back()->with('success', '好评已保存');
+
     }
 
     // 保存 bad（差评）
