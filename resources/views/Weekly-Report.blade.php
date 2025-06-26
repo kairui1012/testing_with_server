@@ -27,9 +27,7 @@
             <h1 class="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-4">
                 Share Your Experience
             </h1>
-            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Your feedback helps us improve our service and assists other customers in making informed decisions.
-            </p>
+
         </div>
 
         <!-- Review Cards Container -->
@@ -56,7 +54,8 @@
                     </h2>
 
                     <!-- Form -->
-                    <form class="space-y-6">
+                    <form class="space-y-6" action="{{ route('good_feedback.submit') }}" method="POST">
+                        @csrf
                         <div>
                             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                                 Share your positive experience
@@ -97,7 +96,8 @@
                     </h2>
 
                     <!-- Form -->
-                    <form class="space-y-6">
+                    <form class="space-y-6" action="{{ route('bad_feedback.submit') }}" method="POST">
+                        @csrf
                         <div>
                             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                                 Help us improve our service
@@ -120,24 +120,6 @@
     </div>
 
     <script>
-        // Star rating functionality
-        document.querySelectorAll('.star-btn').forEach((star, index) => {
-            star.addEventListener('click', function() {
-                const container = this.parentElement;
-                const stars = container.querySelectorAll('.star-btn');
-
-                stars.forEach((s, i) => {
-                    if (i <= index) {
-                        s.classList.add('text-yellow-400');
-                        s.classList.remove('text-gray-300');
-                    } else {
-                        s.classList.add('text-gray-300');
-                        s.classList.remove('text-yellow-400');
-                    }
-                });
-            });
-        });
-
         // Dark mode toggle (if needed)
         function toggleDarkMode() {
             document.documentElement.classList.toggle('dark');

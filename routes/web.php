@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FeedbackController;
 
 Route::get('/', function () {
     return view('login');
@@ -24,5 +25,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::post('/GoodFeedbackController', [FeedbackController::class, 'saveGood'])->name('good_feedback.submit');
+Route::post('/BadFeedbackController', [FeedbackController::class, 'saveBad'])->name('bad_feedback.submit');
 
 require __DIR__.'/auth.php';

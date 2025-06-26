@@ -30,9 +30,7 @@
 
                         <!-- 这里可以添加进度内容 -->
                         <div class="mt-4 text-gray-600 dark:text-gray-400">
-                            <x-calendar>
-                        <p>这是 slot 的内容</p>
-                    </x-calendar>
+                            <x-calendar/>
                         </div>
                     </div>
                 </div>
