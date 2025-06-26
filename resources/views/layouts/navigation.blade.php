@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img src="{{ asset('dabian.png') }}"
+                        <img src="{{ asset('unnamed.png') }}"
                             alt="Logo"
                             class="h-12 w-auto">
                     </a>
@@ -21,8 +21,8 @@
                     <x-nav-link :href="route('Daily-Log')" :active="request()->routeIs('Daily-Log')">
                         {{ __('Daily-Log') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('Weekly-Report')" :active="request()->routeIs('Weekly-Report')">
-                        {{ __('Weekly-Report') }}
+                    <x-nav-link :href="route('weekly-report')" :active="request()->routeIs('Weekly-Report')">
+                    {{ __('weekly-report') }}
                     </x-nav-link>
                 </div>
             </div>

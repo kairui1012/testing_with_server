@@ -2,9 +2,14 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\FeedbacksController;
+
 
 Route::get('/', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/login', function () {
     return view('login');
 });
 
@@ -16,9 +21,9 @@ Route::get('/Daily-Log', function () {
     return view('daily-log');
 })->middleware(['auth', 'verified'])->name('Daily-Log');
 
-Route::get('/Weekly-Report', function () {
+Route::get('/weekly-report', function () {
     return view('weekly-report');
-})->middleware(['auth', 'verified'])->name('Weekly-Report');
+})->middleware(['auth', 'verified'])->name('weekly-report');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -26,9 +31,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::post('/GoodFeedbackController', [FeedbackController::class, 'saveGood'])->name('good_feedback.submit');
-Route::post('/BadFeedbackController', [FeedbackController::class, 'saveBad'])->name('bad_feedback.submit');
-Route::post('/weekly-report', [FeedbackController::class, 'submitWeeklyReport'])->name('weekly-report.submit');
-Route::post('/daily-log', [FeedbackController::class, 'submitDailyLog'])->name('daily-log.submit');
-
+Route::post('/feedback', [FeedbacksController::class, 'submitFeedback'])->name('feedbacks.submit');
 require __DIR__.'/auth.php';

@@ -9,6 +9,7 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
     public function up(): void
     {
         Schema::create('feedbacks', function (Blueprint $table) {
@@ -17,8 +18,9 @@ return new class extends Migration
             $table->text('good')->nullable();      // 用户填写的好评
             $table->text('bad')->nullable();       // 用户填写的差评
             $table->text('remark')->nullable();    // 用户备注
-            $table->string('week')->nullable();
-            $table->timestamps(); // Laravel 默认 created_at 和 updated_at
+            $table->text('reference')->nullable();    // 用户朋友
+            $table->string('week');
+            $table->timestamps();
         });
     }
 
