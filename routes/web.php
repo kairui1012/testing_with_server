@@ -13,11 +13,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/Daily-Log', function () {
-    return view('Daily-Log');
+    return view('daily-log');
 })->middleware(['auth', 'verified'])->name('Daily-Log');
 
 Route::get('/Weekly-Report', function () {
-    return view('Weekly-Report');
+    return view('weekly-report');
 })->middleware(['auth', 'verified'])->name('Weekly-Report');
 
 Route::middleware('auth')->group(function () {
@@ -28,5 +28,7 @@ Route::middleware('auth')->group(function () {
 
 Route::post('/GoodFeedbackController', [FeedbackController::class, 'saveGood'])->name('good_feedback.submit');
 Route::post('/BadFeedbackController', [FeedbackController::class, 'saveBad'])->name('bad_feedback.submit');
+Route::post('/weekly-report', [FeedbackController::class, 'submitWeeklyReport'])->name('weekly-report.submit');
+Route::post('/daily-log', [FeedbackController::class, 'submitDailyLog'])->name('daily-log.submit');
 
 require __DIR__.'/auth.php';
