@@ -31,15 +31,15 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('weekly-report.submit') }}" method="POST" class="space-y-6">
+                    <form action="{{ route('feedbacks.submit') }}" method="POST" class="space-y-6">
                         @csrf
-                        
+
                         <!-- Good Feedback Section -->
                         <div class="border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20 p-6 rounded-r-lg">
                             <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">Good Feedback</h3>
-                            <textarea 
-                                name="good_feedback" 
-                                rows="4" 
+                            <textarea
+                                name="good_feedback"
+                                rows="4"
                                 class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
                                 placeholder="Share positive feedback, achievements, and things that went well this week..."
                             >{{ old('good_feedback') }}</textarea>
@@ -48,9 +48,9 @@
                         <!-- Bad Feedback Section -->
                         <div class="border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20 p-6 rounded-r-lg">
                             <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">Bad Feedback</h3>
-                            <textarea 
-                                name="bad_feedback" 
-                                rows="4" 
+                            <textarea
+                                name="bad_feedback"
+                                rows="4"
                                 class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
                                 placeholder="Describe challenges, issues, or areas that need improvement..."
                             >{{ old('bad_feedback') }}</textarea>
@@ -59,9 +59,9 @@
                         <!-- Referrer Section -->
                         <div class="border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/20 p-6 rounded-r-lg">
                             <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">Referrer</h3>
-                            <input 
-                                type="text" 
-                                name="referrer" 
+                            <input
+                                type="text"
+                                name="referrer"
                                 value="{{ old('referrer') }}"
                                 class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
                                 placeholder="Who referred this feedback or where did it come from?"
@@ -71,9 +71,9 @@
                         <!-- Remark Section -->
                         <div class="border-l-4 border-yellow-500 bg-yellow-50 dark:bg-yellow-900/20 p-6 rounded-r-lg">
                             <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">Remark</h3>
-                            <input 
-                                type="text" 
-                                name="remark" 
+                            <input
+                                type="text"
+                                name="remark"
                                 value="{{ old('remark') }}"
                                 class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
                                 placeholder="Any additional remarks or notes..."
@@ -82,8 +82,8 @@
 
                         <!-- Submit Button -->
                         <div class="flex justify-end pt-6">
-                            <button 
-                                type="submit" 
+                            <button
+                                type="submit"
                                 class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
                             >
                                 Submit Weekly Report
