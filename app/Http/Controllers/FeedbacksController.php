@@ -21,8 +21,8 @@ class FeedbacksController extends Controller
     public function submitFeedback(Request $request)
     {
         $request->validate([
-            'good' => 'nullable|string',
-            'bad' => 'nullable|string',
+            'good' => 'required|string',
+            'bad' => 'required|string',
             'remark' => 'nullable|string',
             'reference' => 'nullable|string',
         ]);
