@@ -13,7 +13,7 @@ class FeedbacksController extends Controller
         $week = now()->format('o-\WW');
         return Feedback::firstOrCreate(
             ['phone' => $userPhone, 'week' => $week],
-            ['good' => null, 'bad' => null, 'remark' => null , 'remark' => null]
+            ['good' => null, 'bad' => null, 'remark' => null , 'reference' => null]
         );
     }
 
