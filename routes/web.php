@@ -1,5 +1,5 @@
 <?php
-
+use App\Livewire\Counter;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FeedbacksController;
@@ -17,13 +17,17 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/Daily-Log', function () {
+Route::get('/daily-Log', function () {
     return view('daily-log');
-})->middleware(['auth', 'verified'])->name('Daily-Log');
+})->middleware(['auth', 'verified'])->name('daily-Log');
 
 Route::get('/weekly-report', function () {
     return view('weekly-report');
 })->middleware(['auth', 'verified'])->name('weekly-report');
+
+Route::get('/feedback-history', function () {
+    return view('feedback-history');
+})->middleware(['auth', 'verified'])->name('feedback-history');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -33,3 +37,9 @@ Route::middleware('auth')->group(function () {
 
 Route::post('/feedback', [FeedbacksController::class, 'submitFeedback'])->name('feedbacks.submit');
 require __DIR__.'/auth.php';
+
+Route::get('/feedbacks', function () {
+    return view('feedbacks.show');
+});
+
+Route::get('/counter', Counter::class);

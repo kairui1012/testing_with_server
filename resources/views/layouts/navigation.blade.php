@@ -18,11 +18,14 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('Daily-Log')" :active="request()->routeIs('Daily-Log')">
-                        {{ __('Daily-Log') }}
+                    <x-nav-link :href="route('daily-Log')" :active="request()->routeIs('daily-Log')">
+                        {{ __('daily-Log') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('weekly-report')" :active="request()->routeIs('Weekly-Report')">
+                    <x-nav-link :href="route('weekly-report')" :active="request()->routeIs('weekly-Report')">
                     {{ __('weekly-report') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('feedback-history')" :active="request()->routeIs('feedback-history')">
+                    {{ __('feedback-history') }}
                     </x-nav-link>
                 </div>
             </div>
