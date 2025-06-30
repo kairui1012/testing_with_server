@@ -1,0 +1,33 @@
+name: Deploy to FTP Server
+
+on:
+  push:
+    branches: [ prod ]
+  pull_request:
+    branches: [ prod ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Deploy to FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        protocol: sftp
+        port: 22
+        local-dir: ./
+        server-dir: /
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/.env
+          **/README.md
+          **/.github/**
