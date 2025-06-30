@@ -5,17 +5,24 @@
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
                     ID
                 </th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
-                    Phone
-                </th>
+
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
                     Good
+                    <svg class="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                    </svg>
                 </th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
                     Bad
+                     <svg class="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                    </svg>
                 </th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
                     Remark
+                     <svg class="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                    </svg>
                 </th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
                     Week
@@ -34,9 +41,6 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         {{ $feedback->id }}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {{ $feedback->phone }}
-                    </td>
                     <td class="px-6 py-4 text-sm text-gray-900">
                         @if($editingField === 'good-' . $feedback->id)
                             <textarea
@@ -51,7 +55,7 @@
                         @else
                             <div class="break-words cursor-pointer hover:bg-gray-100 p-2 rounded"
                                  wire:click="editField('{{ $feedback->id }}', 'good')">
-                                {{ $feedback->good ?: '点击编辑...' }}
+                                {{ $feedback->good ?: '目前为空，点击编辑' }}
                             </div>
                         @endif
                     </td>
@@ -69,7 +73,7 @@
                         @else
                             <div class="break-words cursor-pointer hover:bg-gray-100 p-2 rounded"
                                  wire:click="editField('{{ $feedback->id }}', 'bad')">
-                                {{ $feedback->bad ?: '点击编辑...' }}
+                                {{ $feedback->bad ?: '目前为空，点击编辑'  }}
                             </div>
                         @endif
                     </td>
@@ -87,7 +91,7 @@
                         @else
                             <div class="break-words cursor-pointer hover:bg-gray-100 p-2 rounded"
                                  wire:click="editField('{{ $feedback->id }}', 'remark')">
-                                {{ $feedback->remark ?: '点击编辑...' }}
+                                {{ $feedback->remark ?: '目前为空，点击编辑'  }}
                             </div>
                         @endif
                     </td>
