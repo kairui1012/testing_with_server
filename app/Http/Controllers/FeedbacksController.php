@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Feedback;
+use App\Models\Feedbacks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,7 +11,7 @@ class FeedbacksController extends Controller
     protected function getOrCreateWeeklyFeedback($userPhone)
     {
         $week = now()->format('o-\WW');
-        return Feedback::firstOrCreate(
+        return Feedbacks::firstOrCreate(
             ['phone' => $userPhone, 'week' => $week],
             ['good' => null, 'bad' => null, 'remark' => null , 'referrer' => null]
         );
