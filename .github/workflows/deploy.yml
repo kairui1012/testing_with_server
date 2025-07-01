@@ -78,29 +78,23 @@ jobs:
       uses: appleboy/ssh-action@v1.0.0
       with:
         host: ${{ secrets.HOST }}
-        username: "www"
+        username: "azureuser"
         key: ${{ secrets.KEY }}
         port: '22'
         script: |
           # 进入项目目录
-          cd /www/wwwroot/kairui.engineer
+          sudo cd /www/wwwroot/kairui.engineer
 
           # 拉取最新代码
-          git pull origin main
+          sudo git pull origin main
 
           # 安装/更新依赖
-          composer install --optimize-autoloader --no-dev
+          sudo composer install --optimize-autoloader --no-dev
 
           # 运行数据库迁移
-          php artisan migrate --force
+          sudo php artisan migrate --force
 
           # 清除缓存
-          php artisan config:cache
-          php artisan route:cache
-          php artisan view:cache
-
-          # 重启队列工作进程（如果使用队列）
-          php artisan queue:restart
-
-          # 重启 PHP-FPM 或 web 服务器（根据你的设置调整）
-          sudo systemctl reload php8.3-fpm
+          sudo php artisan config:cache
+          sudo php artisan route:cache
+          sudo php artisan view:cache
