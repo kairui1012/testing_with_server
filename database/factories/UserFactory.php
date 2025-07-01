@@ -24,7 +24,7 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'phone' => fake()->unique()->phoneNumber(),
+            'phone' => fake()->unique()->numerify('##########'), // Generate 10-digit phone number
             'remember_token' => Str::random(10),
         ];
     }
