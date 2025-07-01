@@ -100,7 +100,7 @@
                         {{ $feedback->week }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {{ $feedback->reference }}
+                        {{ $feedback->referrer }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {{ $feedback->created_at->format('Y-m-d') }}
