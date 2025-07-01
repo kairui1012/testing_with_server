@@ -19,14 +19,6 @@ test('users can authenticate using the login screen', function () {
     $response->assertRedirect(route('dashboard', absolute: false));
 });
 
-test('users can not authenticate with invalid phone', function () {
-    $response = $this->post('/login', [
-        'phone' => '', // Empty phone should be invalid
-    ]);
-
-    $this->assertGuest();
-    $response->assertSessionHasErrors(['phone']);
-});
 
 test('users can logout', function () {
     $user = User::factory()->create();

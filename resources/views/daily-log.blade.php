@@ -19,7 +19,6 @@
                                 <input 
                                     type="checkbox" 
                                     id="open_enjoy_app"
-                                    {{ $dailyLog->open_enjoy_app ? 'checked' : '' }}
                                     class="h-4 w-4 text-blue-600 border-gray-300 dark:border-gray-600 rounded focus:ring-blue-500 dark:bg-gray-700"
                                 >
                                 <span class="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">OPEN "ENJOY" APP</span>
@@ -29,7 +28,6 @@
                                 <input 
                                     type="checkbox" 
                                     id="check_in"
-                                    {{ $dailyLog->check_in ? 'checked' : '' }}
                                     class="h-4 w-4 text-blue-600 border-gray-300 dark:border-gray-600 rounded focus:ring-blue-500 dark:bg-gray-700"
                                 >
                                 <span class="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">CHECK IN</span>
@@ -39,7 +37,6 @@
                                 <input 
                                     type="checkbox" 
                                     id="play_view_video"
-                                    {{ $dailyLog->play_view_video ? 'checked' : '' }}
                                     class="h-4 w-4 text-blue-600 border-gray-300 dark:border-gray-600 rounded focus:ring-blue-500 dark:bg-gray-700"
                                 >
                                 <span class="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">PLAY/VIEW VIDEO</span>
@@ -53,39 +50,30 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toDateString();
             const checkboxes = ['open_enjoy_app', 'check_in', 'play_view_video'];
             
+            // Check if it's a new day and clear old data
+            const lastSavedDate = localStorage.getItem('daily_log_date');
+            if (lastSavedDate !== today) {
+                // New day - clear all saved states
+                checkboxes.forEach(id => {
+                    localStorage.removeItem(`daily_log_${id}`);
+                });
+                localStorage.setItem('daily_log_date', today);
+            }
+            
+            // Restore checkbox states from localStorage
             checkboxes.forEach(id => {
                 const checkbox = document.getElementById(id);
+                const savedState = localStorage.getItem(`daily_log_${id}`);
+                if (savedState === 'true') {
+                    checkbox.checked = true;
+                }
                 
+                // Add event listener to save state when changed
                 checkbox.addEventListener('change', function() {
-                    // Send AJAX request to update the database
-                    fetch('{{ route("daily-log.update") }}', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                            'Accept': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            field: id,
-                            value: this.checked
-                        })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (!data.success) {
-                            // If update failed, revert the checkbox
-                            this.checked = !this.checked;
-                            alert('Failed to update daily log. Please try again.');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        // Revert the checkbox on error
-                        this.checked = !this.checked;
-                        alert('An error occurred. Please try again.');
-                    });
+                    localStorage.setItem(`daily_log_${id}`, this.checked);
                 });
             });
         });
