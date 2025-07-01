@@ -15,10 +15,10 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('daily-Log')" :active="request()->routeIs('daily-Log')">
-                        {{ __('daily-Log') }}
+                    <x-nav-link :href="route('daily-log')" :active="request()->routeIs('daily-log')">
+                        {{ __('daily-log') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('weekly-report')" :active="request()->routeIs('weekly-Report')">
+                    <x-nav-link :href="route('weekly-report')" :active="request()->routeIs('weekly-report')">
                     {{ __('weekly-report') }}
                     </x-nav-link>
                     <x-nav-link :href="route('feedback-history')" :active="request()->routeIs('feedback-history')">
