@@ -83,7 +83,7 @@ jobs:
         port: '22'
         script: |
           # 进入项目目录
-          sudo cd /www/wwwroot/kairui.engineer
+          cd /www/wwwroot/kairui.engineer
 
           # 拉取最新代码
           sudo git pull origin main
