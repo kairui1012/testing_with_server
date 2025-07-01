@@ -85,6 +85,9 @@ jobs:
           # 进入项目目录
           cd /www/wwwroot/kairui.engineer
 
+          git config --global --add safe.directory /www/wwwroot/kairui.engineer
+
+
           # 拉取最新代码
           sudo git pull origin main
 
