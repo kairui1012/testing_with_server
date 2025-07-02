@@ -1,3 +1,4 @@
+
 <div class="overflow-x-auto">
     <table class="w-full bg-white border border-gray-200 rounded-lg shadow">
         <thead class="bg-gray-50">
@@ -54,7 +55,7 @@
                             </textarea>
                         @else
                             <div class="break-words cursor-pointer hover:bg-gray-100 p-2 rounded"
-                                 wire:click="editField('{{ $feedback->id }}', 'good')">
+                                wire:click="editField('{{ $feedback->id }}', 'good')">
                                 {{ $feedback->good ?: '目前为空，点击编辑' }}
                             </div>
                         @endif
@@ -72,7 +73,7 @@
                             </textarea>
                         @else
                             <div class="break-words cursor-pointer hover:bg-gray-100 p-2 rounded"
-                                 wire:click="editField('{{ $feedback->id }}', 'bad')">
+                                wire:click="editField('{{ $feedback->id }}', 'bad')">
                                 {{ $feedback->bad ?: '目前为空，点击编辑'  }}
                             </div>
                         @endif
@@ -90,7 +91,7 @@
                             </textarea>
                         @else
                             <div class="break-words cursor-pointer hover:bg-gray-100 p-2 rounded"
-                                 wire:click="editField('{{ $feedback->id }}', 'remark')">
+                                wire:click="editField('{{ $feedback->id }}', 'remark')">
                                 {{ $feedback->remark ?: '目前为空，点击编辑'  }}
                             </div>
                         @endif
@@ -99,7 +100,7 @@
                         {{ $feedback->week }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {{ $feedback->reference }}
+                        {{ $feedback->referrer }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {{ $feedback->created_at->format('Y-m-d') }}

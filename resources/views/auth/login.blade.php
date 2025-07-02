@@ -8,7 +8,7 @@
         <!-- Phone Number -->
         <div>
             <x-input-label class="block mt-1 w-full p-2" for="phone" :value="__('Phone Number')" />
-            <input id="phone" class="block mt-1 w-full p-2 border-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-white" type="phone" name="phone" value="{{ old('phone') }}" required autofocus autocomplete="phone" />
+            <input id="phone" class=" block mt-1 w-full p-2 border-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-white" type="phone" name="phone" value="{{ old('phone') }}" required autofocus autocomplete="phone" />
             <x-input-error :messages="$errors->get('phone')" class="mt-2" />
         </div>
 

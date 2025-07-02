@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('good')->nullable();      // 用户填写的好评
             $table->text('bad')->nullable();       // 用户填写的差评
             $table->text('remark')->nullable();    // 用户备注
-            $table->text('reference')->nullable();    // 用户朋友
+            $table->text('referrer')->nullable();    // 用户朋友
             $table->string('week');
             $table->timestamps();
         });
