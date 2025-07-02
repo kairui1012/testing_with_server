@@ -1,5 +1,4 @@
 <?php
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FeedbacksController;
 use App\Http\Controllers\DailyLogController;
@@ -22,12 +21,6 @@ Route::get('/weekly-report', function () {
 Route::get('/feedback-history', function () {
     return view('feedback-history');
 })->middleware(['auth', 'verified'])->name('feedback-history');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
 Route::post('/feedback', [FeedbacksController::class, 'submitFeedback'])->name('feedbacks.submit');
 

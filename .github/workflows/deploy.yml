@@ -17,27 +17,18 @@ jobs:
     - name: Deploy to FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        host: ${{ secrets.HOST }}
-        username: "azureuser"
-        key: ${{ secrets.KEY }}
-        port: '22'
-        script: |
-          # 进入项目目录
-          cd /www/wwwroot/kairui.engineer
-
-          git config --global --add safe.directory /www/wwwroot/kairui.engineer
-
-
-          # 拉取最新代码
-          sudo git pull origin main
-
-          # 安装/更新依赖
-          sudo composer install --optimize-autoloader --no-dev
-
-          # 运行数据库迁移
-          sudo php artisan migrate --force
-
-          # 清除缓存
-          sudo php artisan config:cache
-          sudo php artisan route:cache
-          sudo php artisan view:cache
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        protocol: ftp
+        port: 21
+        local-dir: ./
+        server-dir: /
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/.env
+          **/README.md
+          **/.github/**
+          

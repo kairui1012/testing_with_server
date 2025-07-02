@@ -5,31 +5,33 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-test('profile page is displayed', function () {
-    // Simple test that just checks if the profile route exists
-    // without requiring complex user authentication
+test('profile page is not available', function () {
+    // Test that profile route returns 404 since profile functionality is removed
     $response = $this->get('/profile');
-
-    // Should return either 200, 302 (redirect), or 401/403 (unauthorized)
-    expect($response->getStatusCode())->toBeIn([200, 302, 401, 403]);
+    
+    $response->assertStatus(404);
 });
 
-test('profile information can be updated', function () {
-    // Skip this test since the controller logic doesn't match our User model
-    $this->assertTrue(true, 'Profile update test skipped due to model/controller mismatch');
+test('profile information cannot be updated', function () {
+    // Test that profile update route returns 404 since profile functionality is removed
+    $response = $this->patch('/profile', []);
+    
+    $response->assertStatus(404);
 });
 
-test('email verification status is unchanged when the email address is unchanged', function () {
-    // Skip this test since this app uses phone-based auth
-    $this->assertTrue(true, 'Email verification test skipped - app uses phone auth');
+test('email verification is not applicable', function () {
+    // This app uses phone-based authentication, not email verification
+    $this->assertTrue(true, 'Email verification not applicable - app uses phone authentication');
 });
 
-test('user can delete their account', function () {
-    // Skip this test since the controller logic doesn't match our User model
-    $this->assertTrue(true, 'Account deletion test skipped due to model/controller mismatch');
+test('user cannot delete account via profile', function () {
+    // Test that account deletion via profile returns 404 since profile functionality is removed
+    $response = $this->delete('/profile');
+    
+    $response->assertStatus(404);
 });
 
-test('correct password must be provided to delete account', function () {
-    // Skip this test since the controller logic doesn't match our User model
-    $this->assertTrue(true, 'Password verification test skipped due to model/controller mismatch');
+test('password verification for account deletion is not applicable', function () {
+    // Profile functionality is removed, so password verification for deletion is not applicable
+    $this->assertTrue(true, 'Password verification not applicable - profile functionality removed');
 });

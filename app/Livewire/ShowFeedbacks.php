@@ -39,13 +39,13 @@ class ShowFeedbacks extends Component
     public function saveField()
     {
         if ($this->editingId && $this->editingColumn) {
-            // 更新数据库
+            // Find and verify ownership
             $feedback = Feedbacks::find($this->editingId);
-            if ($feedback) {
+            if ($feedback && $feedback->phone === Auth::user()->phone) {
                 $feedback->{$this->editingColumn} = $this->editingValue;
                 $feedback->save();
 
-                // 刷新数据
+                // Refresh data
                 $this->loadFeedbacks();
             }
         }
