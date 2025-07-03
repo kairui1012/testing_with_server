@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\FeedbacksController;
 use App\Http\Controllers\DailyLogController;
 use App\Http\Controllers\AdminController;
@@ -34,4 +35,23 @@ require __DIR__.'/auth.php';
 
 Route::get('/feedbacks', function () {
     return view('feedbacks.show');
+});
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/daily-reminder', [App\Http\Controllers\DailyReminderController::class, 'index'])->name('reminder.index');
+    Route::post('/daily-reminder', [App\Http\Controllers\DailyReminderController::class, 'store'])->name('reminder.store');
+});
+
+Route::get('/hi', function () {
+    $response = Http::post('http://165.22.240.183:3000/api/sendText', [
+        'chatId' => '60102661019@c.us',
+        'text' => 'Hi there!',
+        'session' => 'default'
+    ]);
+    
+    return response()->json([
+        'status' => 'Message sent',
+        'response' => $response->json()
+    ]);
 });

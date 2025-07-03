@@ -35,5 +35,9 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
+    public function dailyReminders(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(DailyReminder::class);
+    }
 
 }
