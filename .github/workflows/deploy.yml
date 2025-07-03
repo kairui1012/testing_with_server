@@ -31,3 +31,4 @@ jobs:
           **/.env
           **/README.md
           **/.github/**
+
