@@ -4,42 +4,32 @@ on:
   push:
     branches: [ prod ]
   pull_request:
-     branches: [ prod ]
+    branches: [ prod ]
 
 jobs:
   deploy:
-    name: Deploy
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Deploy to Server via SSH
-      uses: appleboy/ssh-action@v1.0.3
+    - name: Debug & Deploy via SSH
+      uses: appleboy/ssh-action@v1
       with:
-        host: ${{ secrets.HOST }}          # Server IP or domain
-        username: ${{ secrets.USERNAME }}    # 'azureuser'
-        key: ${{ secrets.KEY }}            # The private SSH key
-        port: ${{ secrets.PORT }}            # '22'
+        debug: true
+        host:        ${{ secrets.HOST }}
+        username:    ${{ secrets.USERNAME }}
+        key:         ${{ secrets.SSH_PRIVATE_KEY }}
+        # passphrase:  ${{ secrets.SSH_PASSPHRASE }}   # if needed
+        port:        ${{ secrets.PORT }}
+        strict:      false                           # skip host-key checks
         script: |
-          # Navigate to the project directory on your server
           cd /www/wwwroot/enjoy-report.ispro.software
-
-          # Ensure the directory is trusted by Git
           git config --global --add safe.directory /www/wwwroot/enjoy-report.ispro.software
-          
-          # Pull the latest code from the 'prod' branch
-          # IMPORTANT: Your trigger is 'prod', so you should probably pull from 'prod' not 'main'
           git pull origin prod
-          
-          # Install/update PHP dependencies
           composer install --optimize-autoloader --no-dev --no-interaction
-          
-          # Run database migrations
           php artisan migrate --force
-          
-          # Clear and cache configurations for performance
           php artisan config:cache
           php artisan route:cache
           php artisan view:cache
