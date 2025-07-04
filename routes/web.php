@@ -37,6 +37,10 @@ Route::get('/feedbacks', function () {
     return view('feedbacks.show');
 });
 
+Route::get('/daily-reminder', function () {
+    return view('daily-reminder');
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/daily-reminder', [App\Http\Controllers\DailyReminderController::class, 'index'])->name('reminder.index');
@@ -49,7 +53,7 @@ Route::get('/hi', function () {
         'text' => 'Hi there!',
         'session' => 'default'
     ]);
-    
+
     return response()->json([
         'status' => 'Message sent',
         'response' => $response->json()

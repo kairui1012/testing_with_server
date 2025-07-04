@@ -66,7 +66,7 @@ class SendDailyReminders extends Command
             if (substr($user->phone, 0, 2) !== '60') {
                 $user->phone = '60' . $user->phone;
             }
-            
+
             // echo the phone number for debugging
             $this->info("Sending reminder to user ID {$user->id} with phone number {$user->phone}.");
 
@@ -77,7 +77,7 @@ class SendDailyReminders extends Command
 
             try {
 
-                //log the sending parameter 
+                //log the sending parameter
                 Log::info("Sending WAHA reminder to {$chatId} with message: {$messageToSend}");
                 //log the waha api url and session
                 Log::info("WAHA API URL: {$wahaApiUrl}, Session: {$wahaSession}");
@@ -88,7 +88,7 @@ class SendDailyReminders extends Command
                     'session' => $wahaSession,
                 ]);
 
-                
+
 
                 if ($response->successful()) {
                     $this->info("Successfully sent reminder to {$chatId}.");

@@ -13,7 +13,7 @@ class DailyLogController extends Controller
     {
         $user = Auth::user();
         $today = Carbon::today();
-        
+
         // Get or create today's daily log for the current user
         $dailyLog = DailyLog::firstOrCreate(
             [

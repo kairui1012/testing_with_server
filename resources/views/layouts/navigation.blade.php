@@ -90,6 +90,10 @@
                 <x-responsive-nav-link :href="route('feedback-history')">
                     {{ __('feedback histoy') }}
                 </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('daily-reminder')">
+                    {{ __('daily reminder') }}
+                </x-responsive-nav-link>
+
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
