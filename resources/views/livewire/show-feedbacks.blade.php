@@ -9,7 +9,7 @@
                     <div class="relative" x-data="{ open: false }">
                         <button @click="open = !open" @click.away="open = false"
                             class="inline-flex items-center justify-between px-3 py-1.5 text-xs font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                            <span>{{ $selectedWeek ?: 'WEEK' }}</span>
+                            <span>{{ $selectedWeek ? $this->getWeekRange($selectedWeek) : 'Week' }}</span>
                             <svg class="w-3 h-3 ml-1 text-gray-400" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -31,7 +31,7 @@
                                 @foreach($availableWeeks as $week)
                                 <button wire:click="$set('selectedWeek', '{{ $week }}')" @click="open = false"
                                     class="w-full px-3 py-2 text-left text-xs text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 {{ $selectedWeek == $week ? 'bg-blue-50 text-blue-700' : '' }}">
-                                    {{ $week }}
+                                    {{ $this->getWeekRange($week) }}
                                 </button>
                                 @endforeach
                             </div>
@@ -50,7 +50,7 @@
                             <span class="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded">
                                 ID: {{ $feedback->id }}
                             </span>
-                            <span class="text-xs text-gray-500">{{ $feedback->week }}</span>
+                            <span class="text-xs text-gray-500">{{ $this->getWeekRange($feedback->week) }}</span>
                         </div>
                         <span class="text-xs text-gray-400">{{ $feedback->created_at->format('Y-m-d') }}</span>
                     </div>
@@ -242,7 +242,7 @@
                         @endif
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {{ $feedback->week }}
+                        {{ $this->getWeekRange($feedback->week) }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         {{ $feedback->referrer }}
