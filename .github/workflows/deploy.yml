@@ -1,54 +1,45 @@
-name: Deploy to SSH Server
+name: Deploy to Production Server
 
 on:
   push:
     branches: [ prod ]
   pull_request:
-    branches: [ prod ]
+     branches: [ prod ]
 
 jobs:
   deploy:
+    name: Deploy
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Deploy to SSH Server
-      uses: SamKirkland/SSH-Deploy-Action@v4.3.4
+    - name: Deploy to Server via SSH
+      uses: appleboy/ssh-action@v1.0.3
       with:
-        server: ${{ secrets.SSH_SERVER }}
-        username: ${{ secrets.SSH_USERNAME }}
-        password: ${{ secrets.SSH_PASSWORD }}
-        protocol: sftp
-        port: 22
-        local-dir: ./
-        server-dir: ${{ secrets.SERVER_DIR }}
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          **/.env
-          **/README.md
-          **/.github/**
-          **/storage/logs/**
-          **/bootstrap/cache/**
-          **/tests/**
-          
-    - name: Set permissions and run Laravel commands
-      uses: appleboy/ssh-action@v1.0.0
-      with:
-        host: ${{ secrets.SSH_SERVER }}
-        username: ${{ secrets.SSH_USERNAME }}
-        password: ${{ secrets.SSH_PASSWORD }}
-        port: 22
+        host: ${{ secrets.HOST }}          # Server IP or domain
+        username: ${{ secrets.USERNAME }}    # 'azureuser'
+        key: ${{ secrets.KEY }}            # The private SSH key
+        port: ${{ secrets.PORT }}            # '22'
         script: |
-          cd ${{ secrets.SERVER_DIR }}
-          composer install --no-dev --optimize-autoloader
+          # Navigate to the project directory on your server
+          cd /www/wwwroot/enjoy-report.ispro.software
+
+          # Ensure the directory is trusted by Git
+          git config --global --add safe.directory /www/wwwroot/enjoy-report.ispro.software
+          
+          # Pull the latest code from the 'prod' branch
+          # IMPORTANT: Your trigger is 'prod', so you should probably pull from 'prod' not 'main'
+          git pull origin prod
+          
+          # Install/update PHP dependencies
+          composer install --optimize-autoloader --no-dev --no-interaction
+          
+          # Run database migrations
+          php artisan migrate --force
+          
+          # Clear and cache configurations for performance
           php artisan config:cache
           php artisan route:cache
           php artisan view:cache
-          php artisan migrate --force
-          chmod -R 755 storage
-          chmod -R 755 bootstrap/cache
-

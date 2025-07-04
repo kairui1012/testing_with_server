@@ -24,7 +24,7 @@ class SendDailyReminders extends Command
         // Find all active reminders for the current day and time
         $reminders = DailyReminder::where('is_active', true)
             ->where('weekday', $currentDay)
-            //->whereTime('time', $currentTime)
+            ->whereTime('time', $currentTime)
             ->with('user') // Eager load user to get phone number
             ->get();
 
@@ -81,7 +81,7 @@ class SendDailyReminders extends Command
                 Log::info("Sending WAHA reminder to {$chatId} with message: {$messageToSend}");
                 //log the waha api url and session
                 Log::info("WAHA API URL: {$wahaApiUrl}, Session: {$wahaSession}");
-                
+
                 $response = Http::post("{$wahaApiUrl}/api/sendText", [
                     'chatId' => $chatId,
                     'text' => $messageToSend,
