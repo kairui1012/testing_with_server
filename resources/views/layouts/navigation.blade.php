@@ -24,6 +24,10 @@
                     <x-nav-link :href="route('feedback-history')" :active="request()->routeIs('feedback-history')">
                     {{ __('feedback-history') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('reminder.index')" :active="request()->routeIs('reminder.index')">
+                    {{ __('daily reminder') }}
+                    </x-nav-link>
+
                 </div>
             </div>
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -90,7 +94,7 @@
                 <x-responsive-nav-link :href="route('feedback-history')">
                     {{ __('feedback histoy') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('daily-reminder')">
+                <x-responsive-nav-link :href="route('reminder.index')">
                     {{ __('daily reminder') }}
                 </x-responsive-nav-link>
 

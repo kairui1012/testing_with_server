@@ -7,49 +7,50 @@
 @endsection
 
 @section('content')
-    <div class="flex flex-col md:py-12 bg-white md:bg-gray-100 ">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-none md:shadow-sm sm:rounded-none md:rounded-lg h-full md:h-auto md:auto">
-                <div class="p-6 text-gray-900 dark:text-gray-100 h-full md:h-auto">
-                    <!-- Daily Mission Requirements Section -->
-                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-                        <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-6">Daily Mission Requirements</h3>
-                        <div class="space-y-4">
-                            <label class="flex items-center">
-                                <input
-                                    type="checkbox"
-                                    id="open_enjoy_app"
-                                    {{ $dailyLog->open_enjoy_app ? 'checked' : '' }}
-                                    class="h-4 w-4 text-blue-600 border-gray-300 dark:border-gray-600 rounded focus:ring-blue-500 dark:bg-gray-700"
-                                >
-                                <span class="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">OPEN "ENJOY" APP</span>
-                            </label>
+    <div class="md:min-h-screen">
+        <div class="flex flex-col md:py-12 bg-white md:bg-gray-100 md:w-8/12 md:mx-auto">
+                <div class="bg-white dark:bg-gray-800 md:overflow-hidden shadow-none md:shadow-sm sm:rounded-none md:rounded-lg h-full md:h-auto md:auto">
+                    <div class="p-6 text-gray-900 dark:text-gray-100 h-full md:h-auto">
+                        <!-- Daily Mission Requirements Section -->
+                        <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+                            <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-6">Daily Mission Requirements</h3>
+                            <div class="space-y-4">
+                                <label class="flex items-center">
+                                    <input
+                                        type="checkbox"
+                                        id="open_enjoy_app"
+                                        {{ $dailyLog->open_enjoy_app ? 'checked' : '' }}
+                                        class="h-4 w-4 text-blue-600 border-gray-300 dark:border-gray-600 rounded focus:ring-blue-500 dark:bg-gray-700"
+                                    >
+                                    <span class="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">OPEN "ENJOY" APP</span>
+                                </label>
 
-                            <label class="flex items-center">
-                                <input
-                                    type="checkbox"
-                                    id="check_in"
-                                    {{ $dailyLog->check_in ? 'checked' : '' }}
-                                    class="h-4 w-4 text-blue-600 border-gray-300 dark:border-gray-600 rounded focus:ring-blue-500 dark:bg-gray-700"
-                                >
-                                <span class="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">CHECK IN</span>
-                            </label>
+                                <label class="flex items-center">
+                                    <input
+                                        type="checkbox"
+                                        id="check_in"
+                                        {{ $dailyLog->check_in ? 'checked' : '' }}
+                                        class="h-4 w-4 text-blue-600 border-gray-300 dark:border-gray-600 rounded focus:ring-blue-500 dark:bg-gray-700"
+                                    >
+                                    <span class="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">CHECK IN</span>
+                                </label>
 
-                            <label class="flex items-center">
-                                <input
-                                    type="checkbox"
-                                    id="play_view_video"
-                                    {{ $dailyLog->play_view_video ? 'checked' : '' }}
-                                    class="h-4 w-4 text-blue-600 border-gray-300 dark:border-gray-600 rounded focus:ring-blue-500 dark:bg-gray-700"
-                                >
-                                <span class="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">PLAY/VIEW VIDEO</span>
-                            </label>
+                                <label class="flex items-center">
+                                    <input
+                                        type="checkbox"
+                                        id="play_view_video"
+                                        {{ $dailyLog->play_view_video ? 'checked' : '' }}
+                                        class="h-4 w-4 text-blue-600 border-gray-300 dark:border-gray-600 rounded focus:ring-blue-500 dark:bg-gray-700"
+                                    >
+                                    <span class="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">PLAY/VIEW VIDEO</span>
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

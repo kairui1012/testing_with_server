@@ -13,14 +13,13 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
-    
+
     ->withMiddleware(function (Middleware $middleware): void {
         //
     })
 
     ->withSchedule(function (Schedule $schedule) {
         $schedule->command('reminders:send')->everyMinute();
-        $schedule->command('reminders:sendtoBoss')->everyDay("10:00");
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

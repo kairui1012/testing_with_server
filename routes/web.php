@@ -38,7 +38,7 @@ Route::get('/feedbacks', function () {
 });
 
 Route::get('/daily-reminder', function () {
-    return view('daily-reminder');
+    return view('reminder.index');
 });
 
 
