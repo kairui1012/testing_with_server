@@ -9,15 +9,29 @@ use Illuminate\Support\Facades\Auth;
 
 class ShowFeedbacks extends Component
 {
-    public $feedbacks;
+       public $feedbacks;
     public $editingField = null;
     public $editingValue = '';
     public $editingId = null;
     public $editingColumn = null;
+    public $weeks = [];
 
     public function mount()
     {
         $this->loadFeedbacks();
+    }
+
+    public $selectedWeek = '';
+
+    public function getFilteredFeedbacksProperty()
+    {
+        $query = $this->feedbacks;
+
+        if ($this->selectedWeek) {
+            $query = $query->where('week', $this->selectedWeek);
+        }
+
+        return $query;
     }
 
     public function loadFeedbacks()
@@ -65,4 +79,6 @@ class ShowFeedbacks extends Component
     {
         return view('livewire.show-feedbacks');
     }
+
+
 }
